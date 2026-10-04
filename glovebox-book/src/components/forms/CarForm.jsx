@@ -2,6 +2,7 @@ import React from 'react'
 import styles from './CarForm.module.css'
 
 export function CarForm({ form, onFormChange, onSave, onCancel, onDelete }) {
+    console.log('form:', form)
     return (
         <div className={styles.form}>
             <div className={styles.field}>
