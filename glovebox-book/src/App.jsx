@@ -9,6 +9,7 @@ import { LogForm } from './components/forms/LogForm'
 import { ReminderForm } from './components/forms/ReminderForm'
 import { CarForm } from './components/forms/CarForm'
 import { toMi, toGal, toUSD, getContrastText } from './utils/units'
+import logo from './assets/centerConsoleLogo.png'
 import styles from './App.module.css'
 
 const DEFAULT_CARS = [
@@ -156,28 +157,46 @@ export default function App() {
 
     return (
         <div className={styles.app}>
-
-            {/* Car tabs */}
-            <div className={styles.carTabs}>
-                {cars.map(c => (
-                    <button
-                        key={c.id}
-                        className={`${styles.carTab} ${activeCar === c.id ? styles.carTabActive : ''}`}
-                        style={activeCar === c.id ? { 
-                            background: c.color, 
-                            border: `1.5px solid ${getContrastText(c.color) === '#1a2433' ? '#b0bec9' : c.color}`,
-                            color: getContrastText(c.color),
-                            boxShadow: `0 2px 8px rgba(0,0,0,0.2)`
-                        } : {}}
-                        onClick={() => {
-                            setActiveCar(c.id)
-                            setActiveView('dashboard')
-                        }}
-                    >
-                        {c.name}
-                    </button>
-                ))}
-                <button onClick={addCar}>+ Add car</button>
+            {/* Header + Car tabs */}
+            <div className={styles.headerRow}>
+                <div className={styles.headerLeft}>
+                    <img 
+                        src={logo} 
+                        alt="CenterConsole" 
+                        style={{ 
+                            height: 48, 
+                            width: 'auto', 
+                            borderRadius: 10,
+                            background: 'var(--bg)',
+                            padding: 4
+                        }} 
+                    />
+                    <div>
+                        <p className={styles.appTitle}>CenterConsole</p>
+                        <p className={styles.appSubtitle}>Car maintenance tracker</p>
+                    </div>
+                </div>
+                <div className={styles.carTabs}>
+                    {cars.map(c => (
+                        <button
+                            key={c.id}
+                            className={`${styles.carTab} ${activeCar === c.id ? styles.carTabActive : ''}`}
+                            style={activeCar === c.id ? {
+                                background: c.color,
+                                border: `1.5px solid ${getContrastText(c.color) === '#1a2433' ? '#b0bec9' : c.color}`,
+                                color: getContrastText(c.color),
+                                boxShadow: `0 2px 8px rgba(0,0,0,0.2)`
+                            } : {}}
+                            onClick={() => {
+                                setActiveCar(c.id)
+                                setActiveView('dashboard')
+                            }}
+                        >
+                            {c.name}
+                        </button>
+                    ))}
+                    <button onClick={addCar}>+ Add car</button>
+                </div>
             </div>
 
             {/* Nav tabs */}
