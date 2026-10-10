@@ -1,0 +1,42 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.actions {
+    display: flex;
+    gap: 8px;
+    padding-top: 4px;
+}
+
+.saveBtn {
+    flex: 1;
+    padding: 8px;
+    font-weight: 700;
+    background: linear-gradient(to bottom, #4a8ae8 0%, #2468c8 100%);
+    color: white;
+    border-color: #1a54aa;
+}
+
+.saveBtn:hover {
+    background: linear-gradient(to bottom, #5a9af8 0%, #3478d8 100%);
+    color: white;
+}
+
+.cancelBtn {
+    padding: 8px 16px;
+    color: var(--text-secondary);
+}
