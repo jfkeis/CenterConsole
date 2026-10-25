@@ -32,7 +32,7 @@ export function LogRow({ log, onEdit, onDelete, du, vu }) { //du = distance unit
         : log.type === 'oilchange' && log.oilBrand
         ? `${type.label} · ${log.oilBrand}`
         : log.type === 'oiladd' && log.oilGalStored
-        ? `${type.label} · ${round(log.oilGalStored, 3)} gal`
+        ? `${type.label} · ${round(log.oilGalStored * 3.78541, 2)} L`
         : log.type === 'maintenance' && log.description
         ? log.description
         : type.label
