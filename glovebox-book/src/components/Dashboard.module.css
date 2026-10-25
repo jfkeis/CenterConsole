@@ -13,20 +13,33 @@
 
 /* ── Section ── */
 .section {
-    background: var(--bg-glass);
-    border: 1px solid var(--border-light);
+    background: linear-gradient(
+        to bottom,
+        rgba(240, 248, 255, 0.92) 0%,
+        rgba(220, 236, 255, 0.85) 50%,
+        rgba(210, 228, 255, 0.88) 100%
+    );
+    border: 1px solid rgba(120, 160, 230, 0.4);
     border-radius: var(--radius-lg);
     padding: 14px 16px;
     box-shadow: var(--shadow-glass);
+    position: relative;
+    overflow: hidden;
+}
+
+.section::before {
+    display: none;
 }
 
 .sectionTitle {
     font-size: 11px;
-    font-weight: 600;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.08em;
     color: var(--text-muted);
     margin-bottom: 12px;
+    position: relative;
+    z-index: 1;
 }
 
 /* ── Quick add buttons ── */

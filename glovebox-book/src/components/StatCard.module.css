@@ -14,8 +14,12 @@
     top: 0;
     left: 0;
     right: 0;
-    height: 50%;
-    background: linear-gradient(to bottom, rgba(255,255,255,0.45), rgba(255,255,255,0.1));
+    height: 52%;
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.55) 0%,
+        rgba(255, 255, 255, 0.15) 100%
+    );
     border-radius: var(--radius-md) var(--radius-md) 0 0;
     pointer-events: none;
 }

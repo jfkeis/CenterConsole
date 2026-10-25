@@ -7,60 +7,108 @@
 
 /* ── Root Variables ── */
 :root {
-    /* Fonts */
     --font: 'Segoe UI', system-ui, sans-serif;
 
-    /* Light mode colors */
-    --bg: #dce3ea;
-    --bg-panel: #eef2f6;
-    --bg-glass: #f4f7fa;
-    --border: #b0bec9;
-    --border-light: #d0dae3;
-    --text-primary: #1a2433;
-    --text-secondary: #4a5a6a;
-    --text-muted: #7a8a9a;
-    --accent: #2468c8;
-    --accent-hover: #1a54aa;
-    --accent-text: #ffffff;
+    /* Background - more blue tinted */
+    --bg: linear-gradient(160deg, #b8cce0 0%, #c8d8ec 40%, #b4c8e0 100%);
+    --bg-solid: #bccce0;
+    --bg-panel: rgba(200, 220, 245, 0.7);
+    --bg-glass: rgba(215, 232, 255, 0.8);
+    --bg-input: rgba(235, 244, 255, 0.92);
+
+    /* Borders - more blue */
+    --border: rgba(80, 130, 210, 0.45);
+    --border-light: rgba(120, 160, 230, 0.35);
+    --border-inner: rgba(255, 255, 255, 0.9);
+
+    /* Text */
+    --text-primary: #0f1e35;
+    --text-secondary: #2a4060;
+    --text-muted: #5a7898;
+
+    /* Accent */
+    --accent: #1a58c8;
+    --accent-hover: #1244aa;
+
+    /* Status */
     --danger: #cc2200;
     --warning: #cc7700;
     --success: #227722;
-    --shadow-sm: 0 1px 3px rgba(0,0,0,0.15), 0 0 0 0.5px rgba(0,0,0,0.08);
-    --shadow-md: 0 4px 12px rgba(0,0,0,0.15), 0 0 0 0.5px rgba(0,0,0,0.08);
-    --shadow-glass: inset 0 1px 0 rgba(255,255,255,0.8), 0 4px 12px rgba(0,0,0,0.15);
+
+    /* Shadows - cooler blue tint */
+    --shadow-sm: 
+        0 1px 3px rgba(20, 60, 140, 0.18),
+        0 0 0 1px rgba(255, 255, 255, 0.6) inset,
+        0 1px 0 rgba(255, 255, 255, 0.9) inset;
+    --shadow-md:
+        0 4px 16px rgba(20, 60, 140, 0.22),
+        0 1px 3px rgba(20, 60, 140, 0.12),
+        0 0 0 1px rgba(255, 255, 255, 0.7) inset,
+        0 1px 0 rgba(255, 255, 255, 0.95) inset;
+    --shadow-glass:
+        0 4px 20px rgba(20, 60, 140, 0.22),
+        0 1px 3px rgba(20, 60, 140, 0.12),
+        0 0 0 1px rgba(120, 160, 230, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.95),
+        inset 0 0 30px rgba(200, 225, 255, 0.4);
+
     --radius-sm: 4px;
     --radius-md: 8px;
     --radius-lg: 12px;
-    --radius-xl: 16px;
+    --radius-xl: 18px;
 }
 
 /* ── Dark mode ── */
 @media (prefers-color-scheme: dark) {
     :root {
-        --bg: #1a1f2a;
-        --bg-panel: #222835;
-        --bg-glass: #2a3142;
-        --border: #3a4558;
-        --border-light: #2e3a4a;
-        --text-primary: #e8edf2;
-        --text-secondary: #9aaabb;
-        --text-muted: #6a7a8a;
+        --bg: linear-gradient(160deg, #0d1525 0%, #111a2e 40%, #0a1020 100%);
+        --bg-solid: #111a2e;
+        --bg-panel: rgba(20, 35, 65, 0.8);
+        --bg-glass: rgba(25, 42, 75, 0.75);
+        --bg-input: rgba(15, 28, 55, 0.9);
+
+        --border: rgba(60, 100, 180, 0.4);
+        --border-light: rgba(50, 80, 140, 0.3);
+        --border-inner: rgba(80, 120, 200, 0.2);
+
+        --text-primary: #d8e8f8;
+        --text-secondary: #8aaac8;
+        --text-muted: #4a6888;
+
         --accent: #4a8ae8;
         --accent-hover: #5a9af8;
-        --accent-text: #ffffff;
+
         --danger: #ee4422;
         --warning: #ee9922;
         --success: #44aa44;
-        --shadow-sm: 0 1px 3px rgba(0,0,0,0.4), 0 0 0 0.5px rgba(0,0,0,0.3);
-        --shadow-md: 0 4px 12px rgba(0,0,0,0.4), 0 0 0 0.5px rgba(0,0,0,0.3);
-        --shadow-glass: inset 0 1px 0 rgba(255,255,255,0.05), 0 4px 12px rgba(0,0,0,0.4);
+
+        --shadow-sm:
+            0 1px 3px rgba(0, 0, 0, 0.4),
+            0 0 0 1px rgba(80, 120, 200, 0.2) inset,
+            0 1px 0 rgba(80, 120, 200, 0.15) inset;
+        --shadow-md:
+            0 4px 16px rgba(0, 0, 0, 0.5),
+            0 1px 3px rgba(0, 0, 0, 0.3),
+            0 0 0 1px rgba(60, 100, 180, 0.3) inset,
+            0 1px 0 rgba(80, 130, 220, 0.2) inset;
+        --shadow-glass:
+            0 4px 20px rgba(0, 0, 0, 0.5),
+            0 1px 3px rgba(0, 0, 0, 0.3),
+            0 0 0 1px rgba(60, 100, 180, 0.25),
+            inset 0 1px 0 rgba(80, 130, 220, 0.25),
+            inset 0 0 20px rgba(40, 80, 160, 0.1);
     }
 }
 
 /* ── Base ── */
+html {
+    min-height: 100%;
+}
+
 body {
     font-family: var(--font);
     background: var(--bg);
+    background-attachment: fixed;
     color: var(--text-primary);
     font-size: 14px;
     line-height: 1.5;
@@ -74,22 +122,42 @@ button {
     font-weight: 500;
     padding: 5px 14px;
     border-radius: var(--radius-sm);
-    border: 1px solid var(--border);
-    background: linear-gradient(to bottom, #f8fafc 0%, #e8edf2 50%, #dce3ea 100%);
+    border: 1px solid rgba(60, 110, 200, 0.5);
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(200, 225, 255, 0.95) 100%
+    );
     color: var(--text-primary);
     cursor: pointer;
-    box-shadow: var(--shadow-sm);
+    box-shadow:
+        0 1px 4px rgba(20, 60, 140, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 1),
+        inset 0 -1px 0 rgba(120, 160, 230, 0.4);
     transition: all 0.1s;
 }
 
 button:hover {
-    background: linear-gradient(to bottom, #ffffff 0%, #eef2f6 50%, #e4eaf0 100%);
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2), 0 0 0 0.5px rgba(0,0,0,0.1);
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(215, 235, 255, 1) 100%
+    );
+    box-shadow:
+        0 2px 8px rgba(20, 60, 140, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 1),
+        inset 0 -1px 0 rgba(120, 160, 230, 0.5);
 }
 
 button:active {
-    background: linear-gradient(to bottom, #dce3ea 0%, #e8edf2 100%);
-    box-shadow: inset 0 1px 2px rgba(0,0,0,0.15);
+    background: linear-gradient(
+        to bottom,
+        rgba(190, 215, 250, 0.9) 0%,
+        rgba(210, 228, 252, 0.95) 100%
+    );
+    box-shadow:
+        inset 0 1px 3px rgba(30, 60, 120, 0.2),
+        inset 0 0 0 1px rgba(100, 140, 200, 0.3);
     transform: translateY(1px);
 }
 
@@ -98,40 +166,64 @@ input, textarea, select {
     font-family: var(--font);
     font-size: 14px;
     width: 100%;
-    padding: 6px 10px;
+    padding: 7px 10px;
     border-radius: var(--radius-sm);
-    border: 1px solid var(--border);
-    background: #ffffff;
+    border: 1px solid rgba(80, 120, 180, 0.35);
+    background: var(--bg-input);
     color: var(--text-primary);
-    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+    box-shadow:
+        inset 0 1px 3px rgba(30, 60, 120, 0.12),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.5);
     outline: none;
     transition: border-color 0.15s, box-shadow 0.15s;
 }
 
 input:focus, textarea:focus {
-    border-color: var(--accent);
-    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1), 0 0 0 2px rgba(36,104,200,0.2);
+    border-color: rgba(36, 104, 200, 0.6);
+    box-shadow:
+        inset 0 1px 3px rgba(30, 60, 120, 0.15),
+        0 0 0 3px rgba(36, 104, 200, 0.15),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.6);
 }
 
-/* ── Dark mode inputs ── */
+/* ── Dark mode overrides ── */
 @media (prefers-color-scheme: dark) {
     button {
-        background: linear-gradient(to bottom, #3a4558 0%, #2e3a4a 50%, #252f3e 100%);
+        background: linear-gradient(
+            to bottom,
+            rgba(50, 75, 120, 0.9) 0%,
+            rgba(35, 55, 100, 0.9) 45%,
+            rgba(25, 45, 90, 0.95) 50%,
+            rgba(35, 58, 105, 0.9) 100%
+        );
+        border-color: rgba(60, 100, 180, 0.4);
         color: var(--text-primary);
-        border-color: var(--border);
+        box-shadow:
+            0 1px 3px rgba(0, 0, 0, 0.4),
+            inset 0 1px 0 rgba(80, 130, 220, 0.3),
+            inset 0 -1px 0 rgba(0, 0, 0, 0.2);
     }
 
     button:hover {
-        background: linear-gradient(to bottom, #445268 0%, #384658 50%, #2e3a4a 100%);
-    }
-
-    button:active {
-        background: linear-gradient(to bottom, #252f3e 0%, #2e3a4a 100%);
+        background: linear-gradient(
+            to bottom,
+            rgba(60, 90, 140, 0.95) 0%,
+            rgba(45, 68, 120, 0.95) 45%,
+            rgba(35, 58, 110, 1) 50%,
+            rgba(48, 72, 125, 0.95) 100%
+        );
+        box-shadow:
+            0 2px 6px rgba(0, 0, 0, 0.5),
+            inset 0 1px 0 rgba(100, 150, 240, 0.35),
+            inset 0 -1px 0 rgba(0, 0, 0, 0.3);
     }
 
     input, textarea, select {
-        background: #1e2535;
-        border-color: var(--border);
+        background: var(--bg-input);
+        border-color: rgba(60, 100, 180, 0.35);
         color: var(--text-primary);
+        box-shadow:
+            inset 0 1px 3px rgba(0, 0, 0, 0.3),
+            inset 0 0 0 1px rgba(60, 100, 180, 0.15);
     }
 }
