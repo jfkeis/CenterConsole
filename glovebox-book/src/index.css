@@ -63,16 +63,15 @@
     :root {
         --bg: linear-gradient(160deg, #0d1525 0%, #111a2e 40%, #0a1020 100%);
         --bg-solid: #111a2e;
-        --bg-panel: rgba(20, 35, 65, 0.8);
-        --bg-glass: rgba(25, 42, 75, 0.75);
-        --bg-input: rgba(15, 28, 55, 0.9);
+        --bg-panel: rgba(25, 40, 75, 0.85);
+        --bg-glass: rgba(30, 48, 88, 0.80);
+        --bg-input: rgba(18, 30, 58, 0.95);
 
-        --border: rgba(60, 100, 180, 0.4);
-        --border-light: rgba(50, 80, 140, 0.3);
-        --border-inner: rgba(80, 120, 200, 0.2);
+        --border: rgba(60, 100, 180, 0.45);
+        --border-light: rgba(50, 85, 155, 0.35);
 
-        --text-primary: #d8e8f8;
-        --text-secondary: #8aaac8;
+        --text-primary: #e8f4ff;
+        --text-secondary: #8ab8d8;
         --text-muted: #4a6888;
 
         --accent: #4a8ae8;

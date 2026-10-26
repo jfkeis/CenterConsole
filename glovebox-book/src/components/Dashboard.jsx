@@ -39,7 +39,7 @@ export function Dashboard({ car, logs, reminders, du, vu, cu, onAddLog, onEditLo
                 <StatCard label="Current mileage" value={latestMi ? latestMi.toLocaleString() + ' ' + du : '—'} color="linear-gradient(135deg, #1a58c8 0%, #0e3a9a 100%)" />
                 <StatCard label="Avg efficiency" value={avgEfficiency ? avgEfficiency.toFixed(1) + ' MPG' : '—'} color="linear-gradient(135deg, #157a34 0%, #0a5522 100%)" />
                 <StatCard label="Total fuel cost" value={displayCost(totalFuelCost, cu)} color="linear-gradient(135deg, #7733bb 0%, #552299 100%)" />
-                <StatCard label="Maintenance cost" value={displayCost(totalMaintenanceCost, cu)} color="linear-gradient(135deg, #bb5500 0%, #8a3800 100%)" />
+                <StatCard label="Maintenance cost" value={displayCost(totalMaintenanceCost, cu)} color="linear-gradient(135deg, #d46000 0%, #c54f00 100%)" />
             </div>
 
             {/* Quick add */}
