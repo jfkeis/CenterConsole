@@ -36,10 +36,10 @@ export function Dashboard({ car, logs, reminders, du, vu, cu, onAddLog, onEditLo
         <div className={styles.dashboard}>
             {/* Stat cards */}
             <div className={styles.statsGrid}>
-                <StatCard label="Current mileage" value={latestMi ? latestMi.toLocaleString() + ' ' + du : '—'} color="linear-gradient(135deg, #2468c8 0%, #1244aa 100%)" />
-                <StatCard label="Avg efficiency" value={avgEfficiency ? avgEfficiency.toFixed(1) + ' MPG' : '—'} color="linear-gradient(135deg, #1a9a44 0%, #127733 100%)" />
-                <StatCard label="Total fuel cost" value={displayCost(totalFuelCost, cu)} color="linear-gradient(135deg, #8844cc 0%, #6633aa 100%)" />
-                <StatCard label="Maintenance cost" value={displayCost(totalMaintenanceCost, cu)} color="linear-gradient(135deg, #cc6600 0%, #aa4400 100%)" />
+                <StatCard label="Current mileage" value={latestMi ? latestMi.toLocaleString() + ' ' + du : '—'} color="linear-gradient(135deg, #1a58c8 0%, #0e3a9a 100%)" />
+                <StatCard label="Avg efficiency" value={avgEfficiency ? avgEfficiency.toFixed(1) + ' MPG' : '—'} color="linear-gradient(135deg, #157a34 0%, #0a5522 100%)" />
+                <StatCard label="Total fuel cost" value={displayCost(totalFuelCost, cu)} color="linear-gradient(135deg, #7733bb 0%, #552299 100%)" />
+                <StatCard label="Maintenance cost" value={displayCost(totalMaintenanceCost, cu)} color="linear-gradient(135deg, #bb5500 0%, #8a3800 100%)" />
             </div>
 
             {/* Quick add */}
