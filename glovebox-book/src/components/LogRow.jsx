@@ -1,4 +1,4 @@
-import { kmToMi, lToGal, round } from '../utils/units'
+import { miToKm, galToL, round } from '../utils/units'
 import styles from './LogRow.module.css'
 
 const LOG_TYPES = {
@@ -12,7 +12,7 @@ export function LogRow({ log, onEdit, onDelete, du, vu }) { //du = distance unit
     const type = LOG_TYPES[log.type]
 
     const displayMileage = log.miStored
-        ? Math.round(du === 'km' ? log.miStored * 1.60934 : log.miStored).toLocaleString() + ' ' + du
+        ? Math.round(du === 'km' ? miToKm(log.miStored) : log.miStored).toLocaleString() + ' ' + du
         : null
 
     const displayEfficiency = log.type === 'fillup' && log.mpg
@@ -28,11 +28,11 @@ export function LogRow({ log, onEdit, onDelete, du, vu }) { //du = distance unit
         :''
     
     const title = log.type === 'fillup' && log.galStored
-        ? `${type.label} · ${vu === 'L' ? round(log.galStored * 3.78541, 2) : round(log.galStored, 2)} ${vu}`
+        ? `${type.label} · ${round(vu === 'L' ? galToL(log.galStored) : log.galStored, 2)} ${vu}`
         : log.type === 'oilchange' && log.oilBrand
         ? `${type.label} · ${log.oilBrand}`
         : log.type === 'oiladd' && log.oilGalStored
-        ? `${type.label} · ${round(log.oilGalStored * 3.78541, 2)} L`
+        ? `${type.label} · ${round(galToL(log.oilGalStored), 2)} L`
         : log.type === 'maintenance' && log.description
         ? log.description
         : type.label

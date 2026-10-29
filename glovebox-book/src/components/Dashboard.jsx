@@ -2,7 +2,7 @@ import React from 'react'
 import { StatCard } from './StatCard'
 import { LogRow } from './LogRow'
 import { ReminderRow } from './ReminderRow'
-import { displayCost, displayVolume } from '../utils/units'
+import { displayCost } from '../utils/units'
 import { remStatus } from '../utils/reminders'
 import styles from './Dashboard.module.css'
 
