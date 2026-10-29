@@ -28,7 +28,7 @@ export function LogRow({ log, onEdit, onDelete, du, vu }) { //du = distance unit
         :''
     
     const title = log.type === 'fillup' && log.galStored
-        ? `${type.label} · ${vu === 'L' ? round(log.galStored * 3.78541, 2) : round(log.galStored, 3)} ${vu}`
+        ? `${type.label} · ${vu === 'L' ? round(log.galStored * 3.78541, 2) : round(log.galStored, 2)} ${vu}`
         : log.type === 'oilchange' && log.oilBrand
         ? `${type.label} · ${log.oilBrand}`
         : log.type === 'oiladd' && log.oilGalStored

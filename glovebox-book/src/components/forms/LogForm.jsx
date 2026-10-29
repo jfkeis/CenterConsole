@@ -128,10 +128,10 @@ export function LogForm({ logType, onLogTypeChange, form, onFormChange, onSave, 
       {logType === 'oiladd' && (
         <div className={styles.form}>
           <div className={styles.field}>
-            <label>Amount added ({vu})</label>
+            <label className={styles.label}>Amount added (L)</label>
             <input
               type="number"
-              placeholder={vu === 'gal' ? 'e.g. 0.132' : 'e.g. 0.5'}
+              placeholder="e.g. 0.5"
               value={form.oilVolDisp || ''}
               onChange={e => onFormChange('oilVolDisp', e.target.value)}
             />

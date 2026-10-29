@@ -8,9 +8,9 @@ import { Modal } from './components/Modal'
 import { LogForm } from './components/forms/LogForm'
 import { ReminderForm } from './components/forms/ReminderForm'
 import { CarForm } from './components/forms/CarForm'
-import { toMi, toGal, toUSD, getContrastText } from './utils/units'
 import logo from './assets/centerConsoleLogo.png'
 import styles from './App.module.css'
+import { toMi, toGal, toUSD, getContrastText, miToKm, galToL, usdToEur } from './utils/units'
 
 const DEFAULT_CARS = [
     { id: 'car1', name: "Red Rocket", make: '', model: '', year: '', plate: '', distUnit: 'mi', volUnit: 'gal', curUnit: 'USD', color: '#99241c' },
@@ -48,11 +48,30 @@ export default function App() {
     const vu = car?.volUnit || 'gal'
     const cu = car?.curUnit || 'USD'
 
+    function buildLogForm(log) {
+    return {
+        ...log,
+        distDisp: log.miStored != null
+            ? String(Math.round(du === 'km' ? miToKm(log.miStored) : log.miStored))
+            : '',
+        volDisp: log.galStored != null
+            ? (vu === 'L' ? galToL(log.galStored) : log.galStored).toFixed(3)
+            : '',
+        costDisp: log.usdStored != null
+            ? (cu === 'EUR' ? usdToEur(log.usdStored) : log.usdStored).toFixed(2)
+            : '',
+        oilVolDisp: log.oilGalStored != null
+            ? galToL(log.oilGalStored).toFixed(2)
+            : '',
+    }
+}
+
     function saveLog() {
         const miStored = logForm.distDisp ? toMi(logForm.distDisp, logForm.distInputUnit || du) : undefined
         const galStored = logForm.volDisp ? toGal(logForm.volDisp, logForm.volInputUnit || vu) : undefined
         const usdStored = logForm.costDisp ? toUSD(logForm.costDisp, logForm.costInputUnit || cu) : undefined
-
+        const oilGalStored = logForm.oilVolDisp ? toGal(logForm.oilVolDisp, 'L') : undefined
+        
         let mpg = null
         if (logType === 'fillup' && miStored && galStored) {
             const prevFillup = logs
@@ -71,6 +90,7 @@ export default function App() {
             date: logForm.date,
             miStored,
             galStored,
+            oilGalStored,
             usdStored,
             mpg,
             oilBrand: logForm.oilBrand,
@@ -234,7 +254,7 @@ export default function App() {
                     }}
                     onEditLog={(log) => {
                         setLogType(log.type)
-                        setLogForm({ ...log })
+                        setLogForm(buildLogForm(log))
                         setEditingLog(log)
                         setModal('log')
                     }}
@@ -267,7 +287,7 @@ export default function App() {
                     }}
                     onEdit={(log) => {
                         setLogType(log.type)
-                        setLogForm({ ...log })
+                        setLogForm(buildLogForm(log))
                         setEditingLog(log)
                         setModal('log')
                     }}
