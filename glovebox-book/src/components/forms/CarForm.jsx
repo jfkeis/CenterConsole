@@ -26,7 +26,7 @@ export function CarForm({ form, onFormChange, onSave, onCancel, onDelete }) {
             </div>
 
             <div className={styles.field}>
-                <label>Model</label>
+                <label className={styles.label}>Model</label>
                 <input
                     type="text"
                     placeholder='e.g. Civic'
@@ -36,7 +36,7 @@ export function CarForm({ form, onFormChange, onSave, onCancel, onDelete }) {
             </div>
             
             <div className={styles.field}>
-                <label>Year</label>
+                <label className={styles.label}>Year</label>
                 <input
                     type="number"
                     placeholder='e.g. 1990'
@@ -46,12 +46,22 @@ export function CarForm({ form, onFormChange, onSave, onCancel, onDelete }) {
             </div>
 
             <div className={styles.field}>
-                <label>License Plate</label>
+                <label className={styles.label}>License Plate</label>
                 <input
                     type="text"
                     placeholder='e.g. KLUQ123'
                     value={form.plate || ''}
                     onChange={e => onFormChange('plate', e.target.value)}
+                />
+            </div>
+
+            <div className={styles.field}>
+                <label className={styles.label}>Starting odometer ({form.distUnit || 'mi'})</label>
+                <input
+                    type="number"
+                    placeholder='e.g. 203432'
+                    value={form.startOdo || ''}
+                    onChange={e => onFormChange('startOdo', e.target.value)}
                 />
             </div>
 

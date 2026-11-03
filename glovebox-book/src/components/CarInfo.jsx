@@ -1,6 +1,6 @@
 import React from "react"
 import { StatCard } from "./StatCard"
-import { usdToEur, galToL, round, displayCost, displayVolume } from '../utils/units'
+import { displayCost, displayVolume } from '../utils/units'
 import styles from './CarInfo.module.css'
 
 export function CarInfo({ car, logs, onEditCar }) {

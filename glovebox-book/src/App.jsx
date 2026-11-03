@@ -146,7 +146,11 @@ export default function App() {
     }
 
     function saveCar() {
-        setCars(prev => prev.map(c => c.id === activeCar ? { ...c, ...carForm } : c))
+        const startMi = carForm.startDisp
+            ? toMi(carForm.startDisp, carForm.distUnit || 'mi')
+            : undefined
+        const updated = { ...carForm, startMi, startDisp: undefined }
+        setCars(prev => prev.map(c => c.id === activeCar ? { ...c, ...updated } : c))
         setModal(null)
         setCarForm({})
     }
@@ -321,7 +325,11 @@ export default function App() {
                     car={car}
                     logs={carLogs}
                     onEditCar={() => {
-                        setCarForm({ ...car })
+                        setCarForm({
+                            ...car,
+                            startDisp: car.startMi != null
+                                ? String(Math.round(car.distUnit === 'km' ? miToKm(car.startMi) : car.startMi)) : ''
+                        })
                         setModal('car')
                     }}
                 />
