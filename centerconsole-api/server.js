@@ -1,10 +1,12 @@
 import express from 'express'
 import pg from 'pg'
+import cors from 'cors'
 
 const pool = new pg.Pool({ connectionString: process.env.DATABASE_URL })
 
 const app = express()
 app.use(express.json())
+app.use(cors({ origin: 'http://localhost:5173' }))
 
 app.get('/api/health', (req, res) => {
     res.json({ status: 'ok' })
@@ -133,6 +135,72 @@ app.delete('/api/cars/:id', async (req, res) => {
         const result = await pool.query('DELETE FROM cars WHERE id = $1', [req.params.id])
         if (result.rowCount === 0) {
             return res.status(404).json({ error: 'Car not found' })
+        }
+        res.status(204).end()
+    } catch (err) {
+        console.error(err)
+        res.status(500).json({ error: 'Database error' })
+    }
+})
+
+app.get('/api/cars/:id/reminders', async (req, res) => {
+    try {
+        const result = await pool.query(
+            'SELECT * FROM reminders WHERE car_id = $1 ORDER BY id',
+            [req.params.id]
+        )
+        res.json(result.rows)
+    } catch (err) {
+        console.error(err)
+        res.status(500).json({ error: 'Database error' })
+    }
+})
+
+app.post('/api/cars/:id/reminders', async (req, res) => {
+    try {
+        const { name, interval_mi, interval_months, last_done_on, last_done_mi, notes } = req.body
+        const result = await pool.query(
+            `INSERT INTO reminders (car_id, name, interval_mi, interval_months, last_done_on, last_done_mi, notes)
+             VALUES ($1, $2, $3, $4, $5, $6, $7)
+             RETURNING *`,
+            [req.params.id, name, interval_mi, interval_months, last_done_on, last_done_mi, notes]
+        )
+        res.status(201).json(result.rows[0])
+    } catch (err) {
+        console.error(err)
+        res.status(500).json({ error: 'Database error' })
+    }
+})
+
+app.put('/api/reminders/:id', async (req, res) => {
+    try {
+        const { name, interval_mi, interval_months, last_done_on, last_done_mi, notes } = req.body
+        const result = await pool.query(
+            `UPDATE reminders
+             SET name = $1, interval_mi = $2, interval_months = $3,
+                 last_done_on = $4, last_done_mi = $5, notes = $6
+             WHERE id = $7
+             RETURNING *`,
+            [name, interval_mi, interval_months, last_done_on, last_done_mi, notes, req.params.id]
+        )
+        if (result.rowCount === 0) {
+            return res.status(404).json({ error: 'Reminder not found' })
+        }
+        res.json(result.rows[0])
+    } catch (err) {
+        console.error(err)
+        res.status(500).json({ error: 'Database error' })
+    }
+})
+
+app.delete('/api/reminders/:id', async (req, res) => {
+    try {
+        const result = await pool.query(
+            'DELETE FROM reminders WHERE id = $1',
+            [req.params.id]
+        )
+        if (result.rowCount === 0) {
+            return res.status(404).json({ error: 'Reminder not found' })
         }
         res.status(204).end()
     } catch (err) {
